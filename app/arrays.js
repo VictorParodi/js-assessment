@@ -8,6 +8,9 @@ arraysAnswers = {
    */
   indexOf: function indexOf(arr, item) {
     // Implement a function, that returns the 0 based index of an element in an array.
+    const numbers = arr || [];
+    const itemIdx = numbers.indexOf(item);
+    return itemIdx;
   },
 
   /**
@@ -17,7 +20,9 @@ arraysAnswers = {
    * @returns {Number} The numerical sum of all items in arr.
    */
   sum: function sum(arr) {
-
+    const numbers = arr;
+    const sumTotal = numbers.reduce((lastNumber, number) => lastNumber + number);
+    return sumTotal;
   },
 
   /**
@@ -28,7 +33,9 @@ arraysAnswers = {
    * @returns {Number[]} A new array containing all numbers from arr except item.
    */
   remove: function remove(arr, item) {
-
+    const numbers = arr;
+    const filteredNumbers = numbers.filter(number => number !== item);
+    return filteredNumbers;
   },
 
   /**
@@ -39,7 +46,9 @@ arraysAnswers = {
    * @returns {Number[]} The array arr, with item appended.
    */
   append: function append(arr, item) {
-
+    const numbers = arr;
+    numbers.push(item);
+    return numbers;
   },
 
   /**
@@ -49,7 +58,9 @@ arraysAnswers = {
    * @returns {Number[]} The array arr, with the last element removed..
    */
   truncate: function truncate(arr) {
-
+    const numbers = arr;
+    numbers.pop();
+    return numbers;
   },
 
   /**
@@ -60,7 +71,9 @@ arraysAnswers = {
    * @returns {Number[]} The array arr, with the first element item added
    */
   prepend: function prepend(arr, item) {
-
+    const numbers = arr;
+    numbers.unshift(item);
+    return numbers;
   },
 
 
@@ -71,7 +84,9 @@ arraysAnswers = {
    * @returns {Number[]} The array arr, with the first element item removed.
    */
   curtail: function curtail(arr) {
-
+    const numbers = arr;
+    numbers.shift();
+    return numbers;
   },
 
   /**
@@ -82,7 +97,8 @@ arraysAnswers = {
    * @returns {Number[]} A new array, with elements from arr1 and arr2 in that order.
    */
   concat: function concat(arr1, arr2) {
-
+    const numbers = arr1.concat(arr2);
+    return numbers;
   },
 
   /**
@@ -94,7 +110,9 @@ arraysAnswers = {
    * @returns {Number[]} The array arr, with the number item inserted at position index.
    */
   insert: function insert(arr, item, index) {
-
+    const numbers = arr;
+    numbers.splice(index, 0, item);
+    return numbers;
   },
 
   /**
@@ -105,7 +123,9 @@ arraysAnswers = {
    * @returns {Number} The count of the number of times the number item appeared in arr.
    */
   count: function count(arr, item) {
-
+    const numbers = arr;
+    const repeatedNumber = numbers.filter(number => number === item);
+    return repeatedNumber.length;
   },
 
   /**
@@ -115,7 +135,28 @@ arraysAnswers = {
    * @returns {Number[]} An array of numbers that appear in arr more than once.
    */
   duplicates: function duplicates(arr) {
+    const numbers = arr;
+    let compareArr = [];
 
+    function filterRepeated(number) {
+      const foundNumber = compareArr.find(item => item === number);
+      compareArr.push(number);
+      return (!foundNumber && number) || null;
+    }
+
+    function getRepeatedNumber(repeatedNumber) {
+      const repeatedNumbers = numbers.filter(number => number === repeatedNumber);
+      const num = repeatedNumbers.length > 1 ? repeatedNumber : null;
+      return num;
+    }
+    
+    const arrRepeatedNumbers = numbers.filter((number) => {
+      const repeatedNum = getRepeatedNumber(number);
+      return repeatedNum && filterRepeated(repeatedNum);
+    });
+
+    compareArr = [];
+    return arrRepeatedNumbers;
   },
 
   /**
@@ -125,7 +166,9 @@ arraysAnswers = {
    * @returns {Number[]} A new array of numbers that contains the elements of arr squared.
    */
   square: function square(arr) {
-
+    const numbers = arr;
+    const squareNumbers = numbers.map(number => number * number);
+    return squareNumbers;
   },
 
   /**
@@ -136,6 +179,13 @@ arraysAnswers = {
    * @returns {Number[]} A new array of numbers which represent the indices of target in arr.
    */
   findAllOccurrences: function findAllOccurrences(arr, target) {
+    const numbers = arr;
+    const repeatedNumber = numbers.map((number, idx) => {
+      if (number === target) return idx;
+      return null;
+    });
 
+    const setIndex = repeatedNumber.filter(number => number !== null);
+    return setIndex;
   },
 };

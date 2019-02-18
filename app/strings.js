@@ -22,6 +22,9 @@ stringsAnswers = {
    * @returns {String} The original string of text str reversed.
    */
   reverseString: function reverseString(str) {
-
+    const word = str || '';
+    const splittedWord = word.split('');
+    const reversedWord = splittedWord.reverse().join('');
+    return reversedWord;
   },
 };

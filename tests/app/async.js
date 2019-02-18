@@ -28,8 +28,9 @@ describe('async behavior', () => {
     const url = '/data/testdata.json';
 
     asyncAnswers.manipulateRemoteData(url).then((result) => {
+      const users = result.map(user => user.name);
       expect(result).to.have.length(5);
-      expect(result.join(' ')).to.eql('Adam Alex Matt Paul Rebecca');
+      expect(users.join(' ')).to.eql('Adam Alex Matt Paul Rebecca');
       done();
     });
   });

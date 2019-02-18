@@ -12,6 +12,17 @@ flowControlAnswers = {
    * @returns {String} The string 'fizz', 'buzz', or 'fizzbuzz'
    */
   fizzBuzz: function fizzBuzz(num) {
+    function getProperValue(number) {
+      if (number % 3 === 0) {
+        return (number % 5 === 0) ? 'fizzbuzz' : 'fizz';
+      } else if (number % 5 === 0) {
+        return 'buzz';
+      }
+  
+      return number;
+    }
 
+    const output = (num && !isNaN(num) && getProperValue(num)) || false;
+    return output;
   },
 };
